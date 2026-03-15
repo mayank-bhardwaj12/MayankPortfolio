@@ -49,7 +49,7 @@ const Contact = () => {
             <a href="https://github.com/mayank-bhardwaj12" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 transition-colors border border-transparent dark:border-white/5">
               <FaGithub className="w-5 h-5" />
             </a>
-            <a href="#" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 transition-colors border border-transparent dark:border-white/5">
+            <a href="https://linkedin.com/in/mayank-bhardwaj12/" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 transition-colors border border-transparent dark:border-white/5">
               <FaLinkedinIn className="w-5 h-5" />
             </a>
             <a href="mailto:bhardwajmayank058@gmail.com" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 transition-colors border border-transparent dark:border-white/5">
