@@ -16,7 +16,7 @@ const Footer = () => {
           <a href="mailto:bhardwajmayank058@gmail.com" className="hover:text-[#c084fc] hover:drop-shadow-sm transition-colors">
             <FaEnvelope className="w-5 h-5" />
           </a>
-          <a href="#" className="hover:text-[#c084fc] hover:drop-shadow-sm transition-colors">
+          <a href="https://linkedin.com/in/mayank-bhardwaj12/" className="hover:text-[#c084fc] hover:drop-shadow-sm transition-colors">
             <FaLinkedinIn className="w-5 h-5" />
           </a>
         </div>
