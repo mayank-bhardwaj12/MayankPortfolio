@@ -41,7 +41,7 @@ const AcademicJourney = () => {
         {journeyData.map((item, idx) => (
           <motion.div
             key={idx}
-            className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-6 md:p-8 bg-white/60 dark:bg-[#15151A]/60 backdrop-blur-xl rounded-2xl border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 transition-colors shadow-lg"
+            className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-6 md:p-8 bg-white/60 dark:bg-[#15151A]/60 backdrop-blur-xl rounded-2xl border border-slate-200 dark:border-white/5 hover:border-[#c084fc]/60 dark:hover:border-[#c084fc]/60 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#c084fc]/30 transition-all duration-500 shadow-lg group"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

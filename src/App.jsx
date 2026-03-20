@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import AcademicJourney from './components/AcademicJourney';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import LeetCode from './components/LeetCode';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <About />
           <Skills />
           <Projects />
+          <LeetCode />
           <AcademicJourney />
           <Contact />
         </main>

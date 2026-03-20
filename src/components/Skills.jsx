@@ -90,7 +90,7 @@ const Skills = () => {
         {skillCategories.map((category, idx) => (
           <motion.div
             key={category.title}
-            className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:shadow-md transition-shadow"
+            className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-xl hover:shadow-[#c084fc]/20 hover:border-[#c084fc]/50 transition-all duration-500"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

@@ -46,13 +46,13 @@ const Contact = () => {
           </p>
 
           <div className="flex gap-4">
-            <a href="https://github.com/mayank-bhardwaj12" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 transition-colors border border-transparent dark:border-white/5">
+            <a href="https://github.com/mayank-bhardwaj12" target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 hover:text-[#c084fc] dark:hover:text-[#c084fc] border border-transparent dark:border-white/5 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <FaGithub className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com/in/mayank-bhardwaj12/" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 transition-colors border border-transparent dark:border-white/5">
+            <a href="https://linkedin.com/in/mayank-bhardwaj12/" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 hover:text-[#c084fc] dark:hover:text-[#c084fc] border border-transparent dark:border-white/5 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <FaLinkedinIn className="w-5 h-5" />
             </a>
-            <a href="mailto:bhardwajmayank058@gmail.com" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 transition-colors border border-transparent dark:border-white/5">
+            <a href="mailto:bhardwajmayank058@gmail.com" className="p-3 bg-slate-200 dark:bg-[#1e1e24] hover:bg-slate-300 dark:hover:bg-[#2d2d36] rounded-xl text-slate-700 dark:text-slate-300 hover:text-[#c084fc] dark:hover:text-[#c084fc] border border-transparent dark:border-white/5 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
               <FaEnvelope className="w-5 h-5" />
             </a>
           </div>
@@ -115,8 +115,8 @@ const Contact = () => {
             <button 
               type="submit" 
               disabled={isSubmitting}
-              className={`flex items-center justify-center gap-2 w-full py-4 mt-2 rounded-xl font-bold text-white transition-all ${
-                isSubmitting ? 'bg-[#8b5cf6]/70 cursor-not-allowed' : 'bg-[#8b5cf6] hover:bg-[#7c3aed] shadow-lg shadow-[#8b5cf6]/30'
+              className={`flex items-center justify-center gap-2 w-full py-4 mt-2 rounded-xl font-bold text-white transition-all duration-300 ${
+                isSubmitting ? 'bg-[#8b5cf6]/70 cursor-not-allowed' : 'bg-[#8b5cf6] hover:bg-[#7c3aed] shadow-lg shadow-[#8b5cf6]/30 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#8b5cf6]/40'
               }`}
             >
               {isSubmitting ? 'Sending...' : (

@@ -36,7 +36,7 @@ const Projects = () => {
         {projectsData.map((project, idx) => (
           <motion.div
             key={project.title}
-            className="group relative bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
+            className="group relative bg-white dark:bg-slate-900 rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl hover:shadow-[#c084fc]/30 hover:border-[#c084fc]/50 transition-all duration-500 flex flex-col h-full"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

@@ -3,7 +3,8 @@ import SectionContainer from './SectionContainer';
 import Typewriter from './Typewriter';
 import CustomLottie from './CustomLottie';
 import { motion } from 'framer-motion';
-import { FaGithub, FaFileAlt, FaArrowDown } from 'react-icons/fa';
+import { FaGithub, FaFileAlt, FaArrowDown, FaEye } from 'react-icons/fa';
+import heroImg from '../assets/neat_original_hair.png';
 
 const Hero = () => {
   const [lottieData, setLottieData] = useState(null);
@@ -75,6 +76,9 @@ const Hero = () => {
             <a href="https://github.com/mayank-bhardwaj12" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 rounded-full font-medium transition-colors flex items-center gap-2">
               <FaGithub /> GitHub
             </a>
+            <a href="/Mayank_CV.pdf" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-slate-300 dark:border-slate-700 hover:border-[#c084fc] hover:text-[#c084fc] dark:hover:border-[#c084fc] dark:hover:text-[#c084fc] rounded-full font-medium transition-colors flex items-center gap-2">
+              <FaEye /> View CV
+            </a>
             <a href="/Mayank_CV.pdf" download="Mayank_CV.pdf" className="px-6 py-3 border border-slate-300 dark:border-slate-700 hover:border-[#c084fc] hover:text-[#c084fc] dark:hover:border-[#c084fc] dark:hover:text-[#c084fc] rounded-full font-medium transition-colors flex items-center gap-2">
               <FaFileAlt /> Download CV
             </a>
@@ -86,15 +90,15 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="w-full max-w-lg"
+            className="w-full max-w-sm relative"
           >
-            {lottieData ? (
-              <CustomLottie animationData={lottieData} loop={true} />
-            ) : (
-              <div className="w-full h-80 flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
-              </div>
-            )}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full p-2 bg-gradient-to-tr from-[#c084fc] to-blue-500 shadow-xl shadow-[#c084fc]/20 before:absolute before:inset-0 before:bg-gradient-to-tr before:from-[#c084fc] before:to-blue-500 before:blur-xl before:opacity-30 before:-z-10 before:rounded-full">
+              <img 
+                src={heroImg} 
+                alt="Mayank" 
+                className="w-full h-full object-cover rounded-full border-4 border-white dark:border-slate-900"
+              />
+            </div>
           </motion.div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const Achievements = () => {
         {achievementsData.map((item, idx) => (
           <motion.div
             key={item.title}
-            className="group relative flex items-start gap-4 p-6 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-2 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-[0_8px_30px_rgba(59,130,246,0.15)] hover:border-blue-500/30 transition-all duration-500 overflow-hidden"
+            className="group relative flex items-start gap-4 p-6 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-2xl hover:shadow-[#c084fc]/30 hover:border-[#c084fc]/50 transition-all duration-500 overflow-hidden"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
