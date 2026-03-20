@@ -12,17 +12,37 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
-      setTimeout(() => setSuccess(false), 5000);
-    }, 1500);
+    // Using FormSubmit.co for zero-setup, direct-to-email routing
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("message", formData.message);
+    formDataToSend.append("_captcha", "false"); // Disables the visual captcha redirect
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/bhardwajmayank058@gmail.com", {
+        method: "POST",
+        body: formDataToSend
+      });
+      const data = await response.json();
+      
+      if (data.success === 'true' || data.success === true || response.ok) {
+        setSuccess(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert("There was an error sending the message.");
+      }
+    } catch (error) {
+      console.error("Form submission error", error);
+      alert("Error reaching the mail server.");
+    }
+    
+    setIsSubmitting(false);
+    setTimeout(() => setSuccess(false), 5000);
   };
 
   return (

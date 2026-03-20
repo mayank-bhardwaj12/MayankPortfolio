@@ -4,30 +4,7 @@ import SectionContainer from './SectionContainer';
 import { SiLeetcode } from 'react-icons/si';
 import { FaFire, FaTrophy, FaStar, FaChartLine, FaCode, FaCalendarCheck, FaExternalLinkAlt, FaChartPie, FaBrain, FaMedal } from 'react-icons/fa';
 
-// Animated Counter Hook Component
-const AnimatedCounter = ({ value, duration = 1.5 }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let startTime;
-    let animationFrame;
-
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      setCount(Math.floor(easeProgress * value));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [value, duration]);
-
-  return <span>{count}</span>;
-};
+// AnimatedCounter removed to aggressively boost framerate and prevent continuous React re-renders.
 
 // Generates fake heatmap data for the 52 weeks
 const generateHeatmapData = () => {
@@ -118,13 +95,12 @@ const LeetCode = () => {
 
   return (
     <SectionContainer id="leetcode" className="py-24 relative overflow-hidden bg-slate-50 dark:bg-[#0b0f19]">
-      {/* Sci-Fi Ambient Glows */}
-      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#00f2fe]/10 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#c084fc]/10 blur-[100px] rounded-full pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-[#00ff87]/5 blur-[80px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
+      {/* Sci-Fi Ambient Glows (Optimized with Zero-cost Radial Gradients) */}
+      <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#00f2fe]/10 via-[#00f2fe]/5 to-transparent rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#c084fc]/10 via-[#c084fc]/5 to-transparent rounded-full pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#00ff87]/5 via-transparent to-transparent rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
       
-      {/* Subtle Grid Backdrop for Hacker Feel */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] dark:opacity-[0.05] pointer-events-none z-0"></div>
+      {/* Removed incredibly slow CSS cubes texture to guarantee pristine frame rates */}
 
       {/* 1. Header */}
       <div className="text-center mb-14 relative z-10">
@@ -139,9 +115,7 @@ const LeetCode = () => {
       <div className="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 px-4">
         
         {/* 2. Profile Overview Card */}
-        <motion.div 
-          className="col-span-1 lg:col-span-4 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#00f2fe]/20 hover:border-[#00f2fe]/40 transition-all duration-300 relative overflow-hidden group"
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+        <div className="col-span-1 lg:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#00f2fe]/20 hover:border-[#00f2fe]/40 transition-all duration-300 relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 px-4 py-2 bg-gradient-to-l from-[#00f2fe]/20 to-transparent rounded-bl-2xl font-mono text-[#00f2fe] font-bold text-sm tracking-wider flex items-center gap-2">
             <FaTrophy /> TOP {Math.max(1, Math.floor(stats.ranking / 3000))}%
@@ -166,22 +140,19 @@ const LeetCode = () => {
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-3xl font-black dark:text-white text-slate-800 drop-shadow-[0_0_10px_rgba(0,242,254,0.5)]">
-                  <AnimatedCounter value={stats.totalSolved} />
+                  {stats.totalSolved}
                 </span>
                 <span className="text-xs uppercase tracking-widest font-bold text-slate-500 dark:text-[#a0b0c0]">Solved</span>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Middle Column: Problem Breakdown & Advanced Stats */}
         <div className="col-span-1 lg:col-span-4 flex flex-col gap-6">
           
           {/* 3. Problem Breakdown */}
-          <motion.div 
-            className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-xl flex-grow hover:shadow-[#00ff87]/10 transition-all duration-300"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-          >
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-xl flex-grow hover:shadow-[#00ff87]/10 transition-all duration-300">
             <h4 className="text-sm tracking-widest text-slate-500 dark:text-[#a0b0c0] uppercase font-bold mb-4 flex items-center gap-2">
               <FaCode /> Problem Breakdown
             </h4>
@@ -197,7 +168,7 @@ const LeetCode = () => {
                   <div key={diff.label} className="w-full">
                     <div className="flex justify-between items-end mb-1">
                       <span className={`font-mono font-bold text-sm ${diff.text}`}>{diff.label}</span>
-                      <span className="font-mono text-sm dark:text-white font-bold"><AnimatedCounter value={diff.count} /> <span className="opacity-50">/ {diff.total}</span></span>
+                      <span className="font-mono text-sm dark:text-white font-bold">{diff.count} <span className="opacity-50">/ {diff.total}</span></span>
                     </div>
                     <div className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
                       <motion.div className={`h-full ${diff.color} rounded-full ${diff.shadow}`} initial={{ width: 0 }} whileInView={{ width: `${percent}%` }} transition={{ duration: 1.5, delay: 0.3 }} />
@@ -206,13 +177,10 @@ const LeetCode = () => {
                 )
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* 5. Advanced Stats */}
-          <motion.div 
-            className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#c084fc]/10 transition-all duration-300"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-          >
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#c084fc]/10 transition-all duration-300">
              <div className="grid grid-cols-2 gap-4">
                <div className="flex flex-col bg-slate-100/50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-700/50">
                  <FaChartPie className="text-[#c084fc] mb-2" />
@@ -225,17 +193,14 @@ const LeetCode = () => {
                  <span className="font-mono text-xl font-black dark:text-white">1,642</span>
                </div>
              </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Right Column: Streak & Insights */}
         <div className="col-span-1 lg:col-span-4 flex flex-col gap-6">
           
           {/* 4. Streak Analytics */}
-          <motion.div 
-            className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#ff375f]/10 hover:border-[#ff375f]/30 transition-all duration-300 group"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-          >
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#ff375f]/10 hover:border-[#ff375f]/30 transition-all duration-300 group">
              <h4 className="text-sm tracking-widest text-slate-500 dark:text-[#a0b0c0] uppercase font-bold mb-4 flex items-center gap-2">
               <FaFire className="text-[#ff375f]" /> Streak Analytics
             </h4>
@@ -266,13 +231,10 @@ const LeetCode = () => {
                 </defs>
               </svg>
             </div>
-          </motion.div>
+          </div>
 
           {/* 8. Progress Insights */}
-          <motion.div 
-            className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#00ff87]/10 transition-all duration-300 flex-grow"
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
-          >
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-xl hover:shadow-[#00ff87]/10 transition-all duration-300 flex-grow">
             <h4 className="text-sm tracking-widest text-slate-500 dark:text-[#a0b0c0] uppercase font-bold mb-4 flex items-center gap-2">
               <FaBrain /> Progress Insights
             </h4>
@@ -292,13 +254,11 @@ const LeetCode = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* 6. Heatmap */}
-        <motion.div 
-          className="col-span-1 lg:col-span-12 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl p-6 shadow-xl overflow-x-auto hover:border-[#00ff87]/30 transition-colors duration-500 scrollbar-hide"
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}
+        <div className="col-span-1 lg:col-span-12 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-xl overflow-x-auto hover:border-[#00ff87]/30 transition-colors duration-500 scrollbar-hide"
         >
           <div className="flex justify-between items-center mb-4 min-w-[700px]">
             <h4 className="text-sm tracking-widest text-slate-500 dark:text-[#a0b0c0] uppercase font-bold flex items-center gap-2">
@@ -316,19 +276,17 @@ const LeetCode = () => {
                 {Array.from({ length: 52 }).map((_, colIdx) => (
                   <div 
                     key={colIdx} 
-                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-sm ${getHeatmapColor(heatmapData[rowIdx * 52 + colIdx])} hover:scale-150 hover:z-10 transition-transform duration-200 cursor-cell`}
+                    className={`w-3 h-3 sm:w-4 sm:h-4 rounded-sm ${getHeatmapColor(heatmapData[rowIdx * 52 + colIdx])} hover:opacity-75 transition-opacity duration-200 cursor-cell`}
                     title="Submission details mapped via external API"
                   ></div>
                 ))}
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* 7. Achievements Grid */}
-        <motion.div 
-          className="col-span-1 lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.6 }}
+        <div className="col-span-1 lg:col-span-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
           {[
             { title: 'Top 10% Fast', sub: 'Runtime Rank', icon: <FaChartLine className="w-6 h-6 text-[#00f2fe]" />, border: 'hover:border-[#00f2fe]/50' },
@@ -336,7 +294,7 @@ const LeetCode = () => {
             { title: 'Daily Limit', sub: '10 Problems/Day', icon: <FaFire className="w-6 h-6 text-[#ff375f]" />, border: 'hover:border-[#ff375f]/50' },
             { title: 'Data Structures', sub: 'Foundations', icon: <FaMedal className="w-6 h-6 text-[#ffc01e]" />, border: 'hover:border-[#ffc01e]/50' }
           ].map((badge, i) => (
-            <div key={i} className={`bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/40 dark:border-white/10 rounded-3xl p-5 shadow-lg ${badge.border} hover:-translate-y-2 hover:shadow-xl transition-all duration-300 flex items-center gap-4 group cursor-default`}>
+            <div key={i} className={`bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-3xl p-5 shadow-lg ${badge.border} hover:-translate-y-2 hover:shadow-xl transition-all duration-300 flex items-center gap-4 group cursor-default`}>
               <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl group-hover:scale-110 transition-transform">
                 {badge.icon}
               </div>
@@ -346,12 +304,10 @@ const LeetCode = () => {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* 9. CTA Button */}
-        <motion.div 
-          className="col-span-1 lg:col-span-12 flex justify-center mt-6"
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.7 }}
+        <div className="col-span-1 lg:col-span-12 flex justify-center mt-6"
         >
           <a 
             href="https://leetcode.com/u/mayank_bhardwaj12/"
@@ -369,9 +325,8 @@ const LeetCode = () => {
             </span>
             
             {/* Hover ambient bleed */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-[#00f2fe] via-[#c084fc] to-[#00ff87] opacity-0 group-hover:opacity-30 blur-2xl transition-opacity duration-500 z-0"></div>
           </a>
-        </motion.div>
+        </div>
 
       </div>
     </SectionContainer>
