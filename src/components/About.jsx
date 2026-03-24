@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import SectionContainer from './SectionContainer';
 import CustomLottie from './CustomLottie';
 import { motion } from 'framer-motion';
-import Achievements from './Achievements';
+import Training from './Training';
 import Certifications from './Certifications';
 
 const About = () => {
@@ -62,7 +62,7 @@ const About = () => {
       </div>
 
       <div className="w-full mt-24">
-        <Achievements />
+        <Training />
       </div>
 
       <div className="w-full">
